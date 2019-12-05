@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>app</title>
+</head>
+<body>
+
+<div>
+    <form action="#" onsubmit="go();return false">
+        nom: <input type="text" id="nom" name="nom">
+        prenom: <input type="text" id="prenom" name="prenom">
+        <input type="submit">
+    </form>
+</div>
+
+<div id="personnes"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

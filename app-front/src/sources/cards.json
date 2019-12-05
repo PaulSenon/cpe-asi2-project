@@ -1,0 +1,48 @@
+{
+    "cards": [
+        {
+            "Name": "Superman",
+            "Description": "The origin story of Superman relates that he was born Kal-El on the planet Krypton, before being rocketed to Earth as an infant by his scientist...",
+            "Family": "DC Comic",
+            "HP": "50",
+            "Energy": "100",
+            "Defense": "80",
+            "Attack": "100",
+            "Price": "100",
+            "Image": "https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png"
+        },
+        {
+            "Name": "Batman",
+            "Description": "C'est une chauve-souris",
+            "Family": "0 idée",
+            "HP": "500",
+            "Energy": "1300",
+            "Defense": "840",
+            "Attack": "1005",
+            "Price": "1002",
+            "Image": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c01d.png"
+        },
+        {
+            "Name": "Superman",
+            "Description": "The origin story of Superman relates that he was born Kal-El on the planet Krypton, before being rocketed to Earth as an infant by his scientist...",
+            "Family": "DC Comic",
+            "HP": "50",
+            "Energy": "100",
+            "Defense": "80",
+            "Attack": "100",
+            "Price": "100",
+            "Image": "https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png"
+        },
+        {
+            "Name": "Superman",
+            "Description": "The origin story of Superman relates that he was born Kal-El on the planet Krypton, before being rocketed to Earth as an infant by his scientist...",
+            "Family": "DC Comic",
+            "HP": "50",
+            "Energy": "100",
+            "Defense": "80",
+            "Attack": "100",
+            "Price": "100",
+            "Image": "https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png"
+        }
+    ]
+}
