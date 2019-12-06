@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from './containers/card';
 import List from './containers/list';
 import Header from './containers/header';
-import * as jsonSource from '../../sources/cards.json';
+import * as jsonSource from '../../sources/cards';
 import { connect } from 'react-redux'
 
 
@@ -40,4 +40,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(Buy);
+export default connect(mapStateToProps) (Buy);

@@ -8,7 +8,9 @@ class Button extends Component {
     render() {
 
         return (
-            <input className="ui submit button" type={this.props.type} value={this.props.value} />
+            <button className="ui button">
+                {this.props.value}
+            </button>
         );
     }
 }

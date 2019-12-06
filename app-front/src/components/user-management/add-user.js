@@ -1,40 +1,66 @@
 import React, { Component } from 'react';
 import Information from './containers/information';
 import Button from './containers/button';
-import {
-    BrowserRouter as Router,
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
+import io from 'socket.io-client';
+import { connect } from 'react-redux'
+
 
 class addUser extends Component {
     constructor(props) {
         super(props);
-        this.state = { surname: '', password: '' };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.current_state = "login";
+        this.socket = io();
+        this.handleAddUser = this.handleAddUser.bind(this)
     }
 
-    handleSubmit(event) {
-        this.current_state = "add_user";
+    handleAddUser(e) {
+        e.preventDefault();
+        if (this.props.surname && this.props.password && this.props.name && this.props.re_password) {
+            if (this.props.password !== this.props.re_password) {
+                alert("Les deux mots de passe ne sont pas équivalents.")
+            }
+            else {
+                const msg = {
+                    name: this.props.name,
+                    surname: this.props.surname,
+                    password: this.props.password,
+                };
+                console.log('emit', msg);
+                this.socket.emit('message', msg);
+            }
+        }
+        else {
+            alert("Veuillez renseigner toutes les informations.")
+        }
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form>
                 <div className="ui form">
-                    <Information text="Name" type="text" />
-                    <Information text="Surname" type="text" />
-                    <Information text="Password" type="password" />
-                    <Information text="Re-Password" type="password" />
-                    <Link to='/login'>
-                        <Button value="Cancel" type="submit" />
+                    <Information id="Name" text="Name" type="text" />
+                    <Information id="Surname" text="Surname" type="text" />
+                    <Information id="Password" text="Password" type="password" />
+                    <Information id="Re-Password" text="Re-Password" type="password" />
+                    <Link to='/menu' onClick={this.handleAddUser}>
+                        <Button value="OK" />
                     </Link>
-                    <Link to='/menu'>
-                        <Button value="OK" type="submit" />
+                    <Link to='/login'>
+                        <Button value="Cancel" />
                     </Link>
                 </div>
             </form>
         );
     }
 }
-export default addUser;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        surname: state.userReducer.surname,
+        password: state.userReducer.password,
+        name: state.userReducer.name,
+        re_password: state.userReducer.re_password
+    }
+}
+
+export default connect(mapStateToProps)(addUser);

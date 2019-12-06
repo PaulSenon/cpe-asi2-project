@@ -11,6 +11,7 @@ import AddUser from './components/user-management/add-user';
 import Buy from './components/game/buy'
 import Sell from './components/game/sell'
 import Menu from './components/game/menu'
+import Play from './components/game/play'
 import './lib/Semantic-UI-CSS-master/semantic.min.css'
 import globalReducer from './reducers/globalReducer'
 import { createStore } from 'redux'
@@ -49,6 +50,9 @@ class App extends Component {
               </Route>
               <Route path="/sell">
                 <Sell />
+              </Route>
+              <Route path="/play">
+                <Play />
               </Route>
             </Switch>
           </div>
