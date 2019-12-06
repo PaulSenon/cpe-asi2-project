@@ -12,7 +12,7 @@ public class LogService {
 	private LogRepository logRepository;
 
 	public void addLog(LogDto logDto) {
-		LogModel log = new LogModel(logDto.getMessage());
+		LogModel log = new LogModel(logDto);
 
 		// needed to avoid detached entity passed to persist error
 		logRepository.save(log);

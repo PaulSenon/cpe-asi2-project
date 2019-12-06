@@ -21,8 +21,6 @@ class Socket{
         });
     }
 
-
-
     emit(name, data){
         return new Promise((resolve, reject) => {
             if (!this.socket) return reject(new Error('socket not yet initialized'));

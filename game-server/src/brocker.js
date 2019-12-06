@@ -15,6 +15,7 @@ class Brocker {
                 try{
                     this.client = await this.connect();
                     clearInterval(retry);
+                    console.log('CONNECTION TO BROCKER SUCCESSFUL');
                     resolve(this)
                 }catch(e){
                     console.log('CONNECTION TO BROCKER FAILED. Will retry in 5 seconds');

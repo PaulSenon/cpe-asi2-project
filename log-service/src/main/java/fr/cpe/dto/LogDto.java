@@ -19,6 +19,8 @@ public class LogDto implements Serializable {
     private static final long serialVersionUID = 1069270118228032176L;
 
     private String message;
+    private String source;
+    private String logType;
 
     public String getMessage() {
         return message;
@@ -28,4 +30,19 @@ public class LogDto implements Serializable {
         this.message = message;
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getLogType() {
+        return logType;
+    }
+
+    public void setLogType(String logType) {
+        this.logType = logType;
+    }
 }

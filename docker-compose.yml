@@ -113,7 +113,6 @@ services:
 
   game-server:
     build: ./game-server
-    restart: 'always'
     container_name: game-server-container
     environment:
       SERVER_PORT: 8085
