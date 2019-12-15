@@ -21,13 +21,11 @@ class Sell extends Component {
         return (
             <div>
                 <Header page={this.page} />
-                <div>
-                    <div float="left">
-                        <List cards={this.state.cards_list} page={this.page} />
-                    </div>
-                    <div float="right">
-                        <Card card={this.props.currentCard} />
-                    </div>
+                <div style={{ float: 'left' }}>
+                    <List cards={this.state.cards_list} page={this.page} />
+                </div>
+                <div style={{ float: 'right' }}>
+                    <Card card={this.props.currentCard} />
                 </div>
             </div>
         );

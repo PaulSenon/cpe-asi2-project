@@ -19,13 +19,11 @@ class Play extends Component {
         return (
             <div>
                 <Header page={this.page} />
-                <div>
-                    <div className="four wide column">
-                        <Chat chat={this.state.chat_list} />
-                    </div>
-                    <div className="twelve wide column">
-                        <GameZone />
-                    </div>
+                <div style={{ float: 'left' }}>
+                    <Chat chat={this.state.chat_list} />
+                </div>
+                <div style={{ float: 'right' }}>
+                    <GameZone />
                 </div>
             </div>
         );

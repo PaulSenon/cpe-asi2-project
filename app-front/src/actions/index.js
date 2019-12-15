@@ -19,10 +19,10 @@ export const setPassword=(password_obj)=>{
     }
 }
 
-export const setName=(password_obj)=>{
+export const setName=(name_obj)=>{
     return {
         type: 'SET_NAME',
-        obj: password_obj
+        obj: name_obj
     }
 }
 
@@ -30,5 +30,12 @@ export const setRePassword=(password_obj)=>{
     return {
         type: 'SET_RE_PASSWORD',
         obj: password_obj
+    }
+}
+
+export const setUserName=(username_obj)=>{
+    return {
+        type: 'SET_USER_NAME',
+        obj: username_obj
     }
 }

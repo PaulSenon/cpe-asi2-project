@@ -2,25 +2,44 @@ import React, { Component } from 'react';
 import Information from './containers/information';
 import Button from './containers/button';
 import { Link } from "react-router-dom";
-import io from 'socket.io-client';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux';
+import {setUserName} from '../../actions/index'
+import {history} from '../../App'
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.socket = io();
         this.handleLogin = this.handleLogin.bind(this);
     }
 
-    handleLogin(e) {
-        e.preventDefault();
+    async handleLogin(e) {
         if (this.props.surname && this.props.password) {
-            const msg = { 
-                surname: this.props.surname, 
-                password: this.props.password
+            const msg = {
+                login: this.props.surname,
+                pwd: this.props.password
             };
-            console.log('emit', msg);
-            this.socket.emit('message', msg);
+            console.log('Authentification', msg);
+            try {
+                var url = "//" + window.location.host + ":3000/auth?login=" + this.props.surname + "&pwd=" + this.props.password
+                console.log(url)
+                let response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+                let responseJson = await response.json();
+                if (responseJson){
+                    this.props.actionUserName(this.props.surname);
+                    history.push('/menu');
+                    document.location.reload(false);
+                }
+                else {
+                    alert("Connexion échouée !")
+                }
+            } catch (error) {
+                console.error(error);
+            }
         }
         else {
             alert("Veuillez renseigner votre login et mot de passe.")
@@ -33,17 +52,14 @@ class Login extends Component {
                 <div className="ui form">
                     <Information id="Surname" text="Surname" type="text" />
                     <Information id="Password" text="Password" type="password" />
-                    <Link to='/menu' onClick={this.handleLogin}>
+                    <Link onClick={this.handleLogin}>
                         <Button value="Connect" />
                     </Link>
-                    <Link to='/login'>
-                        <Button value="Cancel" />
-                    </Link>
                     <Link to='/adduser'>
-                        <Button value="New User"/>
+                        <Button value="New User" />
                     </Link>
                 </div>
-            </form>
+            </form >
         );
     }
 }
@@ -55,4 +71,8 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch) => ({
+    actionUserName: (e) => dispatch(setUserName(e))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps) (Login);

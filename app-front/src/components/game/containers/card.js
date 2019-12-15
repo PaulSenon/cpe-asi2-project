@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
 
 class Card extends Component {
     constructor(props) {
         super(props);
+        this.socket = io();
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        const msg = {
+            name: this.props.card.Name,
+            price: this.props.card.Price
+        };
+        console.log('emit', msg);
+        this.socket.emit('message', msg);
     }
 
     render() {
@@ -36,13 +49,6 @@ class Card extends Component {
                             <div className="image imageCard">
 
                                 <div className="blurring dimmable image">
-                                    <div className="ui inverted dimmer">
-                                        <div className="content">
-                                            <div className="center">
-                                                <div className="ui primary button">Add Friend</div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div className="ui fluid image">
                                         <a className="ui left corner label">
                                             {this.props.card.Name}
@@ -75,7 +81,7 @@ class Card extends Component {
                                 <i className="protect icon"></i>
                                 <span id="cardDefenceId">Defense {this.props.card.Defense}</span>
                             </div>
-                            <div className="ui bottom attached button">
+                            <div className="ui bottom attached button" onClick={this.handleClick}>
                                 <i className="money icon"></i>
                                 Actual Value <span id="cardPriceId"> {this.props.card.Price}$</span>
                             </div>

@@ -21,13 +21,11 @@ class Buy extends Component {
         return (
             <div>
                 <Header page={this.page} />
-                <div>
-                    <div float="left">
-                        <List cards={this.state.cards_list} page={this.page} />
-                    </div>
-                    <div float="right">
-                        <Card card={this.props.currentCard} />
-                    </div>
+                <div style={{ float: 'left' }}>
+                    <List cards={this.state.cards_list} page={this.page} />
+                </div>
+                <div style={{ float: 'right' }}>
+                    <Card card={this.props.currentCard} />
                 </div>
             </div>
         );
@@ -40,4 +38,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps) (Buy);
+export default connect(mapStateToProps)(Buy);

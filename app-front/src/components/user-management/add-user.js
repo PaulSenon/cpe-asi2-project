@@ -3,8 +3,8 @@ import Information from './containers/information';
 import Button from './containers/button';
 import { Link } from "react-router-dom";
 import io from 'socket.io-client';
-import { connect } from 'react-redux'
-
+import { connect } from 'react-redux';
+import {history} from '../../App';
 
 class addUser extends Component {
     constructor(props) {
@@ -13,11 +13,10 @@ class addUser extends Component {
         this.handleAddUser = this.handleAddUser.bind(this)
     }
 
-    handleAddUser(e) {
-        e.preventDefault();
+    async handleAddUser(e) {
         if (this.props.surname && this.props.password && this.props.name && this.props.re_password) {
             if (this.props.password !== this.props.re_password) {
-                alert("Les deux mots de passe ne sont pas équivalents.")
+                alert("Les deux mots de passe ne sont pas identiques.")
             }
             else {
                 const msg = {
@@ -25,8 +24,23 @@ class addUser extends Component {
                     surname: this.props.surname,
                     password: this.props.password,
                 };
-                console.log('emit', msg);
-                this.socket.emit('message', msg);
+                console.log('Add-user', msg);
+                try {
+                    await fetch("//" + window.location.host + ":3000/user", {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json'
+                        }, body: JSON.stringify({
+                            "login": this.props.surname,
+                            "pwd": this.props.password
+                        })
+                    });
+                    history.push('/login');
+                    document.location.reload(false);
+                } catch (error) {
+                    console.error(error);
+                }
             }
         }
         else {
@@ -42,7 +56,7 @@ class addUser extends Component {
                     <Information id="Surname" text="Surname" type="text" />
                     <Information id="Password" text="Password" type="password" />
                     <Information id="Re-Password" text="Re-Password" type="password" />
-                    <Link to='/menu' onClick={this.handleAddUser}>
+                    <Link onClick={this.handleAddUser} >
                         <Button value="OK" />
                     </Link>
                     <Link to='/login'>

@@ -16,6 +16,7 @@ import './lib/Semantic-UI-CSS-master/semantic.min.css'
 import globalReducer from './reducers/globalReducer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { createBrowserHistory } from 'history'
 
 const store = createStore(globalReducer)
 
@@ -31,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <Router history={history}>
           <div className="container-fluid">
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -64,3 +65,4 @@ class App extends Component {
 }
 
 export default App;
+export const history = createBrowserHistory();
