@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from './containers/card';
 import List from './containers/list';
 import Header from './containers/header';
-import * as jsonSource from '../../sources/cards.json';
+import * as jsonSource from '../../sources/cards';
 import { connect } from 'react-redux'
 
 
@@ -15,19 +15,36 @@ class Buy extends Component {
         this.state = {
             cards_list: temp_cards
         }
+        this.getAllCards = this.getAllCards.bind(this)
+        this.getAllCards()
+    }
+
+    async getAllCards(){
+        try {
+            var url = "//" + window.location.host + ":3000/cards"
+            console.log(url)
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+            let responseJson = await response.json();
+            this.state.cards_list = responseJson
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     render() {
         return (
             <div>
                 <Header page={this.page} />
-                <div>
-                    <div float="left">
-                        <List cards={this.state.cards_list} page={this.page} />
-                    </div>
-                    <div float="right">
-                        <Card card={this.props.currentCard} />
-                    </div>
+                <div style={{ float: 'left' }}>
+                    <List cards={this.state.cards_list} page={this.page} />
+                </div>
+                <div style={{ float: 'right' }}>
+                    <Card card={this.props.currentCard} />
                 </div>
             </div>
         );

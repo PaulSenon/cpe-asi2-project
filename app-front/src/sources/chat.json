@@ -1,0 +1,19 @@
+{
+    "chats": [
+        {
+            "Name": "Eric",
+            "Date": "10:00:01",
+            "Message": "Good luck!"
+        },
+        {
+            "Name": "Me",
+            "Date": "10:00:02",
+            "Message": "You gonna die"
+        },
+        {
+            "Name": "Eric",
+            "Date": "10:00:03",
+            "Message": "Not sure"
+        }
+    ]
+}

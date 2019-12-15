@@ -5,10 +5,6 @@ class Button extends Component {
         super(props);
     }
 
-    myfunction(){
-        //Render next page
-    }
-
     render() {
         if(this.props.text === "BUY"){
             this.image = 'https://www.clipartwiki.com/clipimg/detail/102-1021782_simple-buy-now-star-burst-svg-png-icon.png'
@@ -22,7 +18,7 @@ class Button extends Component {
         return ( 
             <div>
                 <button>
-                    <img height="100" width="100" src={this.image} onClick={this.myfunction} />
+                    <img height="100" width="100" alt="" src={this.image}/>
                 </button>
             </div>
         );

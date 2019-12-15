@@ -11,10 +11,12 @@ import AddUser from './components/user-management/add-user';
 import Buy from './components/game/buy'
 import Sell from './components/game/sell'
 import Menu from './components/game/menu'
+import Play from './components/game/play'
 import './lib/Semantic-UI-CSS-master/semantic.min.css'
 import globalReducer from './reducers/globalReducer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { createBrowserHistory } from 'history'
 
 const store = createStore(globalReducer)
 
@@ -30,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
+        <Router history={history}>
           <div className="container-fluid">
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -50,6 +52,9 @@ class App extends Component {
               <Route path="/sell">
                 <Sell />
               </Route>
+              <Route path="/play">
+                <Play />
+              </Route>
             </Switch>
           </div>
         </Router>
@@ -60,3 +65,4 @@ class App extends Component {
 }
 
 export default App;
+export const history = createBrowserHistory();

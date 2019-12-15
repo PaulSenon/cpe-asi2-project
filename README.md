@@ -14,13 +14,11 @@ The developped app is supposed to be an online card-game.
 
 Please mind that this project has been left in an unfinished state due to deadline.
 
-
 # Requirements :
 * you must install [**docker**](https://docs.docker.com/install/) (and docker-compose) on you computer
 * you must install **NodeJS** > 10
 * (not mandatory, but we used **yarn**, so you might also use yarn instead of npm to avoid any problem)
 * you must have you ports **80** and **3000** available. *(for dev apps, you should also have the ports 8081 and 8161 free)*
-
 
 # First installation :
 * clone this repo (and move inside)
@@ -37,7 +35,7 @@ Please mind that this project has been left in an unfinished state due to deadli
 # Url and Entrypoints :
 
 ## Main app :
-* When the project is running, you have access to your app on `localhost` wether in `http` or `https`. *(keep in mind that we use a self signed sertificate that our browser mught not like)*
+* When the project is running, you have access to your app on `localhost/login` wether in `http` or `https`. *(keep in mind that we use a self signed sertificate that our browser mught not like)*
 
 ## APIs :
 * You can acces to the services REST APIs, using the port **3000** : `localhost:3000` (wether in `http` or `https`).
@@ -116,10 +114,40 @@ Here is the list of what we planned to do but we did not had enough time:
     * Add a real user Auth (jwt, salt, hash)
     * Finish the project :^)
 
-
-
 # Team (group n°4) :
 * Antoine PEROT
 * Clément GILLET
 * Paul SENON
 * Pierre DUCROZET
+
+# Répartition des tâches :
+* Antoine PEROT:
+    * Développement application react pour l’atelier 1
+    * Développement springboot et la transformation monolith/soa pour l’atelier 2
+    * Conception architecture et schémas
+* Clément GILLET:
+    * Création de toutes les pages de l’application en React
+    * Communication Front/Services via API REST et Socket.io
+    * Dev de tout le front
+    * Config proxy
+* Paul SENON:
+    * Développement du service de log (springboot)
+    * Intégration/configuration du proxy, du serveur static, de la DB, etc
+    * Développement serveur de jeu (NodeJS)
+    * Intégration communication node<->services via bus de comm
+    * Intégration communication node<->client via sockets
+    * Dockerisation de tout l’architecture
+    * Un peu de pair programming en Java pour l'achi SOA (com inter services) 
+* Pierre DUCROZET:
+    * Travail sur la gestion des dépendances maven
+    * Développement Springboot
+    * Travail sur l'utilisation du bus de comm depuis Java
+    * Mise en place activeMQ
+    * Transformation monolithic/soa
+
+# Demo
+Here is a link to the video demo of this project: [https://youtu.be/P8f4__yvc-k](https://youtu.be/P8f4__yvc-k)
+
+# Repository
+Here is the link to the public github of this project : [TODO](https://)
+

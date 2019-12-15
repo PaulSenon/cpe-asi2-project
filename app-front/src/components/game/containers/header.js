@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { history } from '../../../App'
 
 class Header extends Component {
     constructor(props) {
@@ -12,7 +14,7 @@ class Header extends Component {
                 <h3 className="ui right floated header">
                     <i className="user circle outline icon"></i>
                     <div className="content">
-                        <span id="userNameId">Jdoe</span>
+                        <span id="userNameId">{this.props.name}</span>
                         <div className="sub header"><span>5000</span>$</div>
                     </div>
                 </h3>
@@ -25,4 +27,11 @@ class Header extends Component {
         );
     }
 }
-export default Header;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        name: state.connectedReducer.name
+    }
+}
+
+export default connect(mapStateToProps)(Header);
