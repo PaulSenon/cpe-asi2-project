@@ -149,5 +149,5 @@ Here is the list of what we planned to do but we did not had enough time:
 Here is a link to the video demo of this project: [https://youtu.be/P8f4__yvc-k](https://youtu.be/P8f4__yvc-k)
 
 # Repository
-Here is the link to the public github of this project : [TODO](https://)
+Here is the link to the public github of this project : [https://github.com/PaulSenon/cpe-asi2-project](https://github.com/PaulSenon/cpe-asi2-project)
 
