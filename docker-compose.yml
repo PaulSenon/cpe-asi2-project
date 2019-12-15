@@ -11,8 +11,8 @@ services:
       MYSQL_PASSWORD: "admin"
     networks:
       - default
-    ports:
-      - 3306:3306
+    # ports:
+    #   - 3306:3306
 
   brocker:
     image: webcenter/activemq:latest
@@ -41,6 +41,7 @@ services:
       BROCKER_PORT: 61616
       BROCKER_USER: admin
       BROCKER_PWD: admin
+      MQ_IN: "com.cpe.springboot.logs.in"
     networks:
       - default
     depends_on:

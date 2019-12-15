@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import com.cpe.springboot.lib.LoggerClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class StoreService {
 	UserService userService; 
 	@Autowired
 	StoreRepository storeRepository;
+	@Autowired
+	private LoggerClient logger;
+
 	
 	private StoreModel store;
 	
@@ -49,8 +53,10 @@ public class StoreService {
 			u.addCard(c);
 			u.setAccount(u.getAccount()-c.getPrice());
 			userService.updateUser(u);
+			logger.info("card bought success: user="+user_id+" card="+card_id);
 			return true;
 		}else {
+			logger.info("card bought fail: user="+user_id+" card="+card_id);
 			return false;
 		}
 	}
@@ -69,6 +75,7 @@ public class StoreService {
 		cardService.updateCard(c);
 		u.setAccount(u.getAccount()+c.computePrice());
 		userService.updateUser(u);
+		logger.info("card sell success : user="+user_id+" card="+card_id);
 		return true;
 	}
 	

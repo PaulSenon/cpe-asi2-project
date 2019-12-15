@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.cpe.springboot.lib.LoggerClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class UserService {
 	
 	@Autowired
 	private CardModelService cardModelService;
+
+	@Autowired
+	private LoggerClient logger;
 
 	public List<UserModel> getAllUsers() {
 		List<UserModel> userList = new ArrayList<>();
@@ -42,15 +46,18 @@ public class UserService {
 			user.addCard(card);
 		}
 		userRepository.save(user);
+		logger.info("user added "+user.toString());
 	}
 
 	public void updateUser(UserModel user) {
 		userRepository.save(user);
+		logger.info("user updated "+user.toString());
 
 	}
 
 	public void deleteUser(String id) {
 		userRepository.deleteById(Integer.valueOf(id));
+		logger.info("user deleted "+id);
 	}
 
 	public List<UserModel> getUserByLoginPwd(String login, String pwd) {
