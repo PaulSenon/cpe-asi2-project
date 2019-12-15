@@ -67,6 +67,7 @@ Please mind that this project has been left in an unfinished state due to deadli
 
 ## DONE :
 This project covers the following features. Most of the time we developped only one usecase that exploit a feature, to show that we know how to do it, but it's not implemented everywhere :
+
 * Docker :
     * Fully dockerized architecture (but not so complex, and not yet scalable)
     * Use of env variables to setup every conf data inside our apps that can be managed all from the docker-compose file (not possible for enginx that doesn't give access to ENV in conf file)
@@ -93,6 +94,7 @@ This project covers the following features. Most of the time we developped only 
 
 ## WIP :
 Here is the list of the work we've done but has not been safe/finidhed enough to be integrated to our stack. So for these, you'll have to ckeck the code to know how we made it :
+
 * Springboot SOA :
     * Maven project structure :
         * common bundle, with abstract and entry point
@@ -104,7 +106,8 @@ Here is the list of the work we've done but has not been safe/finidhed enough to
         * Envelope inplementation to send messages between services
 
 ## TODO :
-Here is the list of what we planned to do but we did not had enough time.
+Here is the list of what we planned to do but we did not had enough time:
+
 * Springboot SOA :
     * Handle response to REST request after having done a subrequest to another service via ActiveMq (would have required the use of Threads)
 * Docker :
