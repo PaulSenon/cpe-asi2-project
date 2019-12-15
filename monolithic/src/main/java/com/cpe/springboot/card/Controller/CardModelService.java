@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import com.cpe.springboot.lib.LoggerClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,9 @@ public class CardModelService {
 
 	@Autowired
 	private CardModelRepository cardRepository;
+
+	@Autowired
+	private LoggerClient logger;
 	
 	@Autowired
 	private CardReferenceService cardRefService;
@@ -36,21 +40,30 @@ public class CardModelService {
 
 	public void addCard(CardModel cardModel) {
 		cardRepository.save(cardModel);
+		logger.info("add card "+cardModel.toString());
 	}
 
 	public void updateCardRef(CardModel cardModel) {
 		cardRepository.save(cardModel);
+		logger.info("update cardRef card "+cardModel.toString());
 
 	}
 	public void updateCard(CardModel cardModel) {
 		cardRepository.save(cardModel);
+		logger.info("update card "+cardModel.toString());
 	}
 	public Optional<CardModel> getCard(Integer id) {
 		return cardRepository.findById(id);
 	}
 	
 	public void deleteCardModel(Integer id) {
-		cardRepository.deleteById(id);
+		try{
+			cardRepository.deleteById(id);
+			logger.info("delete card "+id);
+		}catch (Exception e) {
+			logger.warning("delete card falure " + id + " Exception: "+e.getMessage());
+			throw e;
+		}
 	}
 	
 	public List<CardModel> getRandCard(int nbr){
