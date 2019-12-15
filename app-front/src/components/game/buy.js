@@ -15,6 +15,25 @@ class Buy extends Component {
         this.state = {
             cards_list: temp_cards
         }
+        this.getAllCards = this.getAllCards.bind(this)
+        this.getAllCards()
+    }
+
+    async getAllCards(){
+        try {
+            var url = "//" + window.location.host + ":3000/cards"
+            console.log(url)
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+            let responseJson = await response.json();
+            this.state.cards_list = responseJson
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     render() {

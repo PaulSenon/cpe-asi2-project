@@ -34,14 +34,14 @@ class List extends Component {
                             {this.props.cards.map((card,key)  => {
                                 return (
                                     <tr key={key} onClick={()=>this.handleCardClick(card)}>
-                                        <td>{card.Name}</td>
-                                        <td>{card.Description}</td>
-                                        <td>{card.Family}</td>
-                                        <td>{card.HP}</td>
-                                        <td>{card.Energy}</td>
-                                        <td>{card.Defense}</td>
-                                        <td>{card.Attack}</td>
-                                        <td>{card.Price}</td>
+                                        <td>{card.name}</td>
+                                        <td>{card.description}</td>
+                                        <td>{card.family}</td>
+                                        <td>{card.hp}</td>
+                                        <td>{card.energy}</td>
+                                        <td>{card.defence}</td>
+                                        <td>{card.attack}</td>
+                                        <td>{card.price}</td>
                                         <td>
                                             <div className="ui vertical animated button" tabIndex="0">
                                 <div className="hidden content">{this.props.page}</div>
